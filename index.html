@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVDL - Hospital Veterinário de Demerval Lobão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E4429',
+                            emerald: '#125D38',
+                            primary: '#1E824C',
+                            accent: '#25D366',
+                            light: '#F2F8F4',
+                            navy: '#1B2A4A',
+                            softDark: '#1A231E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .bg-pattern {
+            background-color: #f8faf9;
+            background-image: radial-gradient(#125d38 0.5px, transparent 0.5px), radial-gradient(#125d38 0.5px, #f8faf9 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(18, 93, 56, 0.1);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #125D38 0%, #0E4429 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(18,93,56,0.95) 0%, rgba(14,68,41,0.92) 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- TOP BAR -->
+    <div class="bg-brand-dark text-white text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="far font-bold fa-clock text-green-400 mr-1.5"></i>Segunda a Sábado: 08:00 às 18:00</span>
+                <span class="hidden md:inline"><i class="fas fa-map-marker-alt text-green-400 mr-1.5"></i>Rua Santa Rita, Centro - Demerval Lobão - PI</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/hvdl.oficial" target="_blank" class="hover:text-green-300 transition-colors flex items-center gap-1">
+                    <i class="fab fa-instagram text-sm"></i> @hvdl.oficial
+                </a>
+                <a href="tel:5586999773706" class="hover:text-green-300 transition-colors flex items-center gap-1">
+                    <i class="fas fa-phone-alt text-xs"></i> (86) 99977-3706
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-brand-emerald rounded-2xl flex items-center justify-center text-white shadow-md group-hover:bg-brand-dark transition-all duration-300">
+                        <i class="fas fa-paw text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-2xl font-black tracking-tight text-brand-emerald">HVDL</span>
+                            <i class="fas fa-plus text-xs text-red-500 font-bold"></i>
+                        </div>
+                        <p class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-gray-500 leading-none">
+                            Hospital Veterinário <span class="hidden sm:inline">de Demerval Lobão</span>
+                        </p>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAV -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+                    <a href="#inicio" class="hover:text-brand-emerald transition-colors">Início</a>
+                    <a href="#sobre" class="hover:text-brand-emerald transition-colors">Sobre</a>
+                    <a href="#servicos" class="hover:text-brand-emerald transition-colors">Serviços</a>
+                    <a href="#horarios" class="hover:text-brand-emerald transition-colors">Horários</a>
+                    <a href="#localizacao" class="hover:text-brand-emerald transition-colors">Localização</a>
+                </nav>
+
+                <!-- CTA BUTTON -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20HVDL." target="_blank" class="inline-flex items-center gap-2 bg-brand-emerald hover:bg-brand-dark text-white font-bold py-2.5 px-5 rounded-full shadow-lg shadow-green-900/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-sm">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Agendar Consulta</span>
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:text-brand-emerald hover:bg-gray-100 focus:outline-none">
+                    <i class="fas fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 text-gray-700 font-semibold hover:text-brand-emerald">Início</a>
+            <a href="#sobre" class="block py-2 text-gray-700 font-semibold hover:text-brand-emerald">Sobre</a>
+            <a href="#servicos" class="block py-2 text-gray-700 font-semibold hover:text-brand-emerald">Serviços</a>
+            <a href="#horarios" class="block py-2 text-gray-700 font-semibold hover:text-brand-emerald">Horários</a>
+            <a href="#localizacao" class="block py-2 text-gray-700 font-semibold hover:text-brand-emerald">Localização</a>
+            <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20HVDL." target="_blank" class="w-full flex items-center justify-center gap-2 bg-brand-emerald text-white font-bold py-3 px-4 rounded-xl shadow mt-2">
+                <i class="fab fa-whatsapp text-lg"></i> Agendar pelo WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative bg-brand-softDark text-white overflow-hidden py-16 lg:py-24">
+        <!-- Background Banner Graphic Simulation -->
+        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/20 border border-green-400/30 text-green-300 text-xs sm:text-sm font-semibold">
+                        <i class="fas fa-heart text-red-400"></i>
+                        <span>Mais que um hospital, somos família!</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Cuidado Completo,<br>
+                        <span class="text-green-400">Amor Incondicional.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-300 max-w-2xl font-light">
+                        No <strong class="text-white font-bold">HVDL - Hospital Veterinário de Demerval Lobão</strong>, seu pet encontra tudo o que precisa para viver com muita saúde, segurança e bem-estar!
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" class="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-slate-950 font-bold py-4 px-8 rounded-2xl shadow-lg shadow-green-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span>Falar no WhatsApp</span>
+                        </a>
+                        <a href="#servicos" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-2xl border border-white/20 backdrop-blur-sm transition-all duration-300">
+                            <span>Ver Nossos Serviços</span>
+                            <i class="fas fa-arrow-down text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights Badges -->
+                    <div class="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-medium text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-400"></i> Equipe Qualificada
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-400"></i> Estrutura Completa
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-400"></i> Exames & Diagnósticos
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HERO CARD DISPLAY -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md bg-white text-gray-800 rounded-3xl p-6 shadow-2xl border-4 border-white/20">
+                        <div class="absolute -top-4 -right-4 bg-yellow-400 text-gray-900 font-extrabold text-xs px-4 py-1.5 rounded-full shadow-lg">
+                            <i class="fas fa-star mr-1"></i> Atendimento Dedicado
+                        </div>
+                        
+                        <div class="rounded-2xl overflow-hidden mb-5 bg-gray-100 aspect-video relative">
+                            <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80" alt="Cão e Gato HVDL" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
+                                <p class="text-white text-sm font-semibold">Aqui, cada detalhe é pensado para o seu pet</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 bg-brand-light p-4 rounded-2xl border border-green-100">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-emerald text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-heart text-xs"></i>
+                                </div>
+                                <p class="text-xs text-gray-700 leading-relaxed">
+                                    "Aqui, cada detalhe é pensado para o bem-estar do seu pet e para a sua tranquilidade."
+                                </p>
+                            </div>
+                            <p class="text-right font-serif italic text-brand-emerald text-sm font-bold pt-1">
+                                Conte sempre com a gente!
+                            </p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
+                            <span><i class="fas fa-map-marker-alt text-brand-emerald"></i> Centro - Demerval Lobão</span>
+                            <a href="#horarios" class="text-brand-emerald font-bold hover:underline">Ver Horários &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-brand-emerald font-bold uppercase text-xs tracking-wider bg-green-100 px-3 py-1 rounded-full">Sobre o HVDL</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">
+                        Atendimento veterinário de confiança ao seu alcance
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        O <strong>Hospital Veterinário de Demerval Lobão (HVDL)</strong> foi criado com o propósito de oferecer suporte completo à saúde dos animais da nossa região. Unimos tecnologia avançada, estrutura moderna e, acima de tudo, um atendimento humanizado e afetuoso.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Seja para consultas de rotina, exames preventivos, procedimentos cirúrgicos ou internação monitorada, nossa equipe está pronta para dar toda a atenção que o seu melhor amigo merece.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <h4 class="font-bold text-brand-emerald text-lg mb-1"><i class="fas fa-user-md mr-2"></i>Profissionais</h4>
+                            <p class="text-xs text-gray-500">Médicos veterinários altamente qualificados e dedicados.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <h4 class="font-bold text-brand-emerald text-lg mb-1"><i class="fas fa-microscope mr-2"></i>Precisão</h4>
+                            <p class="text-xs text-gray-500">Equipamentos modernos para exames de imagem e diagnósticos rápidos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=80" alt="Veterinária cuidando do cão" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-brand-emerald text-white p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-shield-alt text-2xl text-green-300"></i>
+                            <span class="font-bold text-sm">Segurança e Afeto</span>
+                        </div>
+                        <p class="text-xs opacity-90">Tudo para a saúde do seu pet em um só lugar!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="servicos" class="py-20 bg-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-emerald font-bold uppercase text-xs tracking-wider bg-green-100 px-3 py-1 rounded-full">Nossos Serviços</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-3 tracking-tight">
+                    Cuidado integral para a saúde do seu pet
+                </h2>
+                <p class="text-gray-600 mt-3 text-base">
+                    Conheça a lista completa de serviços e procedimentos disponíveis na nossa estrutura.
+                </p>
+            </div>
+
+            <!-- SERVICES GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-container">
+
+                <!-- Service 1: Cirurgias -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Cirurgias</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Estrutura completa e equipe qualificada para cuidar e realizar procedimentos com máxima segurança.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Cirurgias." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Consultar Informações</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Procedimentos Diversos -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Procedimentos Diversos</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Atendimentos especializados para atender a diversas necessidades de saúde do seu animal.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Procedimentos." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Consultar Informações</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Internação -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-procedures"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Internação</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Ambiente seguro e monitoramento constante para proporcionar o melhor cuidado e recuperação.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Interna%C3%A7%C3%A3o." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Consultar Informações</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4: Consultas -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-user-nurse"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Consultas</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Avaliação completa com profissionais altamente dedicados ao bem-estar e saúde do seu pet.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Consulta." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Agendar Consulta</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5: Exames -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Exames Laboratoriais</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Diagnósticos precisos e ágeis essenciais para direcionar um tratamento preventivo e eficaz.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Exames." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Saber Mais</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6: Ultrassom -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ultrassom</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Tecnologia avançada de ultrassonografia que auxilia no diagnóstico com extrema precisão.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20Ultrassom." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Agendar Exame</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 7: Raio X -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Raio X</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Imagens radiográficas detalhadas para identificar e acompanhar diversas condições médicas.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Raio%20X." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Agendar Exame</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 8: Vacinação -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-green-100 text-brand-emerald rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Vacinação</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Proteção e prevenção através de vacinas essenciais para garantir uma vida longa e saudável ao seu pet.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20saber%20sobre%20as%20Vacinas%20dispon%C3%ADveis." target="_blank" class="inline-flex items-center text-xs font-bold text-brand-emerald hover:text-brand-dark mt-2">
+                        <span>Consultar Vacinas</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Service 9: Serviços Funerários com Cremação -->
+                <div class="service-card glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group border-amber-200/50">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-50 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-700 group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Serviços Funerários com Cremação</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Despedidas dignas, conduzidas com absoluto respeito, amor e preservação de memórias inesquecíveis.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20Servi%C3%A7os%20Funer%C3%A1rios." target="_blank" class="inline-flex items-center text-xs font-bold text-amber-700 hover:text-amber-900 mt-2">
+                        <span>Mais detalhes com sensibilidade</span> <i class="fas fa-chevron-right ml-1 text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE & LOCATION SECTION -->
+    <section id="horarios" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-brand-emerald to-brand-dark rounded-3xl text-white shadow-2xl overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-0">
+                    
+                    <!-- LEFT COLUMN: Hours & Contact Info -->
+                    <div class="p-8 sm:p-12 flex flex-col justify-between space-y-8">
+                        <div>
+                            <div class="inline-block bg-white/10 text-green-300 font-semibold text-xs px-3 py-1 rounded-full mb-4">
+                                Horário & Atendimento
+                            </div>
+                            <h2 class="text-3xl font-extrabold tracking-tight">Estamos prontos para receber o seu pet</h2>
+                            <p class="text-green-100 text-sm mt-2">Confira nossos horários de funcionamento e localização em Demerval Lobão - PI.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Horário Box -->
+                            <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl border border-white/10">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-300 text-xl flex-shrink-0">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-white">Horário de Funcionamento</h4>
+                                    <p class="text-sm text-green-100 mt-1">Segunda a Sábado</p>
+                                    <p class="text-lg font-extrabold text-green-400">08:00 às 18:00</p>
+                                </div>
+                            </div>
+
+                            <!-- Contato Box -->
+                            <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl border border-white/10">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-300 text-xl flex-shrink-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-white">Telefone para Contato / WhatsApp</h4>
+                                    <a href="https://wa.me/5586999773706" target="_blank" class="text-xl font-extrabold text-green-400 hover:underline inline-block mt-1">
+                                        (86) 99977-3706
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Localização Box -->
+                            <div class="flex items-start gap-4 bg-white/10 p-4 rounded-2xl border border-white/10" id="localizacao">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-300 text-xl flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-white">Endereço</h4>
+                                    <p class="text-sm text-green-100 mt-1">
+                                        Rua Santa Rita, Centro<br>
+                                        <span class="text-yellow-300 font-semibold">Ponto de referência: ao lado do posto Corujão</span><br>
+                                        Demerval Lobão - PI
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Como%20fa%C3%A7o%20para%20chegar%20ao%20HVDL%3F" target="_blank" class="inline-flex items-center gap-2 bg-white text-brand-dark font-extrabold py-3.5 px-6 rounded-2xl hover:bg-green-100 transition-colors shadow">
+                                <i class="fas fa-directions"></i>
+                                <span>Como Chegar ao Hospital</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Interactive Appointment Form Widget -->
+                    <div class="bg-white text-gray-800 p-8 sm:p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-2 text-brand-dark">Envie uma Mensagem Rápida</h3>
+                        <p class="text-gray-500 text-xs mb-6">Preencha abaixo para gerar uma mensagem direta para o nosso WhatsApp:</p>
+
+                        <form id="whatsapp-form" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Seu Nome</label>
+                                <input type="text" id="form-name" required placeholder="Ex: Maria Silva" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-emerald/50 focus:border-brand-emerald text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nome e Espécie do Pet</label>
+                                <input type="text" id="form-pet" required placeholder="Ex: Thor (Cão) ou Mimi (Gato)" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-emerald/50 focus:border-brand-emerald text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Assunto de Interesse</label>
+                                <select id="form-service" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-emerald/50 focus:border-brand-emerald text-sm bg-white">
+                                    <option value="Consulta">Consulta Geral</option>
+                                    <option value="Exames">Exames / Ultrassom / Raio X</option>
+                                    <option value="Vacinação">Vacinação</option>
+                                    <option value="Cirurgia">Cirurgia ou Internação</option>
+                                    <option value="Outros">Outros procedimentos</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Mensagem (opcional)</label>
+                                <textarea id="form-message" rows="3" placeholder="Conte resumidamente o que o seu pet precisa..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-emerald/50 focus:border-brand-emerald text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-dark text-white font-bold py-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                <span>Enviar Agendamento via WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 text-sm mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-2 text-white font-extrabold text-2xl">
+                        <div class="w-9 h-9 bg-brand-emerald rounded-xl flex items-center justify-center text-white text-base">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <span>HVDL</span>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+                        Hospital Veterinário de Demerval Lobão - PI. Oferecemos estrutura completa, consultas, cirurgias, exames e atendimento com amor incondicional para o seu pet.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://www.instagram.com/hvdl.oficial" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-emerald text-white flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/5586999773706" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-emerald text-white flex items-center justify-center transition-colors">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-wider">Links Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                        <li><a href="#servicos" class="hover:text-white transition-colors">Nossos Serviços</a></li>
+                        <li><a href="#horarios" class="hover:text-white transition-colors">Horários & Localização</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contato Direct -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-wider">Contato & Atendimento</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-brand-emerald"></i>
+                            <span>(86) 99977-3706</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-clock text-brand-emerald"></i>
+                            <span>Seg. a Sáb. 08:00 às 18:00</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-brand-emerald mt-0.5"></i>
+                            <span>Rua Santa Rita, Centro, Demerval Lobão - PI</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 HVDL - Hospital Veterinário de Demerval Lobão. Todos os direitos reservados.</p>
+                <p class="flex items-center gap-1">
+                    <span>Mais que um hospital, somos família!</span>
+                    <i class="fas fa-heart text-red-500 text-xs"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/5586999773706?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." 
+       target="_blank" 
+       title="Falar no WhatsApp"
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform hover:scale-110 focus:outline-none">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></span>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Interactive WhatsApp Form Submission Handler
+        const whatsappForm = document.getElementById('whatsapp-form');
+        whatsappForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('form-name').value.trim();
+            const pet = document.getElementById('form-pet').value.trim();
+            const service = document.getElementById('form-service').value;
+            const message = document.getElementById('form-message').value.trim();
+
+            let text = `Olá! Meu nome é *${name}*.\n`;
+            text += `Gostaria de agendamento/informações para o meu pet: *${pet}*.\n`;
+            text += `Serviço de interesse: *${service}*.\n`;
+            if (message) {
+                text += `Observações: ${message}\n`;
+            }
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/5586999773706?text=${encodedText}`;
+
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
